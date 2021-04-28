@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-public class UserChoose {
+public class ShowBoard {
 
 	static char playerSymbol, computerSymbol;
 	static Scanner sc = new Scanner(System.in);
 
-	//UC-1 Creating an empty Board 
+	 
 	public static char[] createEmptyBoard() 
 	{
 		char[] board = new char[10];
@@ -48,13 +48,27 @@ public class UserChoose {
 	}
 
 
+	
+	public static void displayBoard(char[] board) {
+		System.out.println("\n\t " + board[1] + " | " + board[2] + " | " + board[3] + "\n\t-----------");
+		System.out.println("\t " + board[4] + " | " + board[5] + " | " + board[6] + "\n\t-----------");
+		System.out.println("\t " + board[7] + " | " + board[8] + " | " + board[9] + "\n\t");
+	}
+
+	private static boolean isEmpty(char[] board) {
+		for(char cell: board) {
+			if(cell == ' ')
+				return true;
+		}
+		return false;
+	}
+
 	public static void main(String[] args) {
 
 		char[] board = createEmptyBoard();
 		playerSymbol = chooseXorO();
-
+		displayBoard(board);
 	}
-
 }
 
 
