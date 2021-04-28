@@ -152,6 +152,20 @@ public class ShowBoard {
 		}	
 	}
 
+	// toss to who plays first
+		public static void toss(char[] board) {
+			int toss = (int) (Math.random() * 2 % 2);
+			if (toss == HEAD) {
+				System.out.println("Player Wins the Toss.");
+				lastPlayed = "Player";
+				movePlayer(board);						
+			}else {
+				System.out.println("Computer Wins the Toss.");
+				lastPlayed = "Computer";
+
+			}
+		}
+
 	public static void main(String[] args) {
 
 		char[] board = createEmptyBoard();
