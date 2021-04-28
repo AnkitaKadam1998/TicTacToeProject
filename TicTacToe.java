@@ -166,6 +166,76 @@ public class ShowBoard {
 			}
 		}
 
+		public static void moveComputer(char[] board) {
+		int checkCompWinPos = checkIsWinning(board, computerSymbol); 
+		int checkPlayWinPos = checkIsWinning(board, playerSymbol);
+
+		if( checkCompWinPos != 0 ) {
+			board[checkCompWinPos] = computerSymbol;
+			showBoard(board);
+			System.out.println("Computer Won The Game !! \nDo You Want to Play Another Game (Y/N) : ");
+			if(Character.toUpperCase(sc.next().charAt(0)) == 'Y')							//UC13 -- Next Game
+				startGame();
+			else
+				System.exit(0);			
+		}		
+		
+	}
+		
+		private static int checkIsWinning(char[] board, char letter) {
+			int index = 1;
+			while(index > 0 && index < 10) {
+				if(board[index] == ' ') {
+					board[index] = letter;
+					if(checkWin(board)) {
+						return index;
+					}
+					else {
+						board[index] = ' ';
+					}
+				}
+				index++;
+			}
+			return 0;
+		}
+
+		private static boolean isEmpty(char[] board) {
+			for(char cell: board) {
+				if(cell == ' ')
+					return true;
+			}
+			return false;
+		}
+
+
+		private static boolean checkWin(char[] board) {
+			return ((board[1] == board[2] && board[2] == board[3] && board[1] != ' ') 						//top-row	
+					|| (board[4] == board[5] && board[5] == board[6] && board[4] != ' ')					//middle-row
+					|| (board[7] == board[8] && board[8] == board[9] && board[7] != ' ') 					//bottom-row					
+					|| (board[1] == board[4] && board[4] == board[7] && board[1] != ' ') 					//left-column
+					|| (board[2] == board[5] && board[5] == board[8] && board[2] != ' ')					//middle-column
+					|| (board[3] == board[6] && board[6] == board[9] && board[3] != ' ') 					//right-column
+					|| (board[1] == board[5] && board[5] == board[9] && board[1] != ' ') 					//left-diagonal
+					|| (board[3] == board[5] && board[5] == board[7] && board[3] != ' '));					//right-diagonal
+		}
+
+		private static boolean areMovesLeft(char[] board) {
+			for (int pos = 1; pos < board.length; pos++) {
+				if (pos == ' ')
+					return true;
+			}
+			return false;
+		}
+
+
+		private static void startGame() {
+			char[] board = createEmptyBoard();
+			playerSymbol = chooseXorO();
+			showBoard(board);
+			toss(board);
+		}
+
+
 	public static void main(String[] args) {
 
 		char[] board = createEmptyBoard();
@@ -173,6 +243,8 @@ public class ShowBoard {
 		displayBoard(board);
 		chooseLocatin(board);
 		movePlayer(board);
+		toss(board);
+		startGame(board);
 	}
 }
 
