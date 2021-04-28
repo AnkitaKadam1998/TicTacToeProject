@@ -1,7 +1,21 @@
-class TicTacToe
-{
-public static void main(String args[])
-{
-System.out.println("Welcome to TicTacToe");
+public class GameBoard {
+	
+	public static char[] createboard()
+	{
+		char [] board = new char[10];
+				for(int i=1;i<10;i++)
+				{
+					board[i] = ' ';
+				}
+				
+				return board;
+    
+    }
+	
+	public static void main(String args[])
+	{
+		char[] board = createboard();
+	}
 }
-}
+
+
