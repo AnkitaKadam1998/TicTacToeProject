@@ -63,11 +63,83 @@ public class ShowBoard {
 		return false;
 	}
 
+	public static void chooseLocatin(char [] board)
+	{	
+		System.out.println("check the index you want to play");
+		Scanner sc1 = new Scanner(System.in);
+		int location = sc1.nextInt();
+		while(location > 8 || location < 0)
+		{
+			System.out.println("enter the valid index to make move");
+			location = sc1.nextInt();
+		}
+		if(location >= 0 && location <= 8) {
+			switch(location)
+			{
+			case 0:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 1:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 2:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 3:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 4:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 5:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 6:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 7:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			case 8:
+				if(board[location] == ' ')
+					System.out.println("index is free you can make your move");
+				else
+					System.out.println("index is not free try another location");
+				break;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 
 		char[] board = createEmptyBoard();
 		playerSymbol = chooseXorO();
 		displayBoard(board);
+		chooseLocatin(board);
 	}
 }
 
